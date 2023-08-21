@@ -13,11 +13,21 @@
 
 Start a detached server at host port 3306
 
-`docker run --name=mysql57 -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql/mysql-server:5.7`
+```
+docker run --name=mysql57 -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql/mysql-server:5.7
+```
+
+For M1 Macs
+
+```
+docker run --platform linux/amd64 --name=mysql57 -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql/mysql-server:5.7
+```
 
 Connect to docker container
 
-`docker exec -it mysql57 mysql -p`
+```
+docker exec -it mysql57 mysql -p
+```
 
 Create superuser
 
