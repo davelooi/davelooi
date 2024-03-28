@@ -50,3 +50,12 @@ services:
       AWS_SECRET_ACCESS_KEY: DUMMYCOINJARSECRET
       DYNAMO_ENDPOINT: http://dynamodb2:8000
       PORT: 8002
+
+  mongodb7:
+    container_name: mongodb7
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: password
