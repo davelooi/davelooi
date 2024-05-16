@@ -1,20 +1,20 @@
 version: '3.8'
 services:
-  mysql57:
-    container_name: mysql57
-    image: mysql/mysql-server:5.7
-    platform: linux/amd64
-    environment:
-      MYSQL_ROOT_PASSWORD: "password"
-    ports:
-      - "3306:3306"
+  # mysql57:
+  #   container_name: mysql57
+  #   image: mysql/mysql-server:5.7
+  #   platform: linux/amd64
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: "password"
+  #   ports:
+  #     - "3306:3306"
   mysql80:
     container_name: mysql80
     image: mysql/mysql-server:8.0
     environment:
       MYSQL_ROOT_PASSWORD: "password"
     ports:
-      - "3307:3306"
+      - "3306:3306"
   pg13:
     container_name: pg13
     image: postgres:13.8
