@@ -20,6 +20,7 @@ services:
       MYSQL_ROOT_HOST: "%"
     ports:
       - "127.0.0.1:3306:3306"
+
   pg13:
     container_name: pg13
     image: postgres:13.8
@@ -27,11 +28,13 @@ services:
       POSTGRES_PASSWORD: "password"
     ports:
       - "5432:5432"
+
   redis7:
     container_name: redis7
     image: redis:7
     ports:
       - "6379:6379"
+
   redisinsight:
     container_name: redisinsight1
     image: redislabs/redisinsight:latest
@@ -39,11 +42,13 @@ services:
       - "8001:8001"
     volumes:
       - ./data/redisinsight:/db
+
   dynamodb2:
     container_name: dynamodb2
     image: amazon/dynamodb-local:latest
     ports:
       - "8000:8000"
+
   dynamodb-admin:
     container_name: dynamodb-admin
     image: "aaronshaf/dynamodb-admin:latest"
@@ -64,3 +69,31 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongoadmin
       MONGO_INITDB_ROOT_PASSWORD: password
+
+  clickhouse:
+    container_name: clickhouse
+    image: "clickhouse/clickhouse-server:latest"
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      CLICKHOUSE_DB: "default"
+      CLICKHOUSE_USER: "looi"
+      CLICKHOUSE_PASSWORD: "password"
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: "1"
+
+  s3mock:
+    container_name: s3mock
+    image: "adobe/s3mock:latest"
+    ports:
+      - "9090:9090"
+    environment:
+      initialBuckets: "indices-dev"
+
+  # s3mock-test:
+  #   container_name: s3mock-test
+  #   image: "adobe/s3mock:latest"
+  #   expose:
+  #     - "9090"
+  #   environment:
+  #     initialBuckets: "indices-test"
