@@ -55,6 +55,14 @@ grant all on *.* to looi@'%';
 flush privileges;
 ```
 
+### For Trilogy
+
+This avoids the TLS requirement but weakens security vs caching_sha2_password, but should be fine for development DB.
+
+```
+ALTER USER 'looi'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+```
+
 ## Redis
 
 ### Redis 5.0

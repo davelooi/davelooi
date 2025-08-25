@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   # mysql57:
   #   container_name: mysql57
@@ -10,28 +10,28 @@ services:
   #     - "3306:3306"
   mysql80:
     container_name: mysql80
-    image: mysql:8.0.32
+    image: mysql:8
     command:
-      - "--default-authentication-plugin=mysql_native_password"
+      - "--mysql-native-password=ON"
       - "--character-set-server=utf8mb4"
       - "--collation-server=utf8mb4_unicode_ci"
     environment:
       MYSQL_ROOT_PASSWORD: "password"
       MYSQL_ROOT_HOST: "%"
     ports:
-      - "127.0.0.1:3306:3306"
+      - "3306:3306"
 
-  pg13:
-    container_name: pg13
-    image: postgres:13.8
+  pg17:
+    container_name: pg17
+    image: postgres:17
     environment:
       POSTGRES_PASSWORD: "password"
     ports:
       - "5432:5432"
 
-  redis7:
-    container_name: redis7
-    image: redis:7
+  redis8:
+    container_name: redis8
+    image: redis:8
     ports:
       - "6379:6379"
 
@@ -43,23 +43,23 @@ services:
     volumes:
       - ./data/redisinsight:/db
 
-  dynamodb2:
-    container_name: dynamodb2
+  dynamodb:
+    container_name: dynamodb
     image: amazon/dynamodb-local:latest
     ports:
       - "8000:8000"
 
-  dynamodb-admin:
-    container_name: dynamodb-admin
-    image: "aaronshaf/dynamodb-admin:latest"
-    ports:
-      - "8002:8002"
-    environment:
-      AWS_REGION: ap-southeast-2
-      AWS_ACCESS_KEY_ID: DUMMYCOINJARKEY
-      AWS_SECRET_ACCESS_KEY: DUMMYCOINJARSECRET
-      DYNAMO_ENDPOINT: http://dynamodb2:8000
-      PORT: 8002
+  # dynamodb-admin:
+  #   container_name: dynamodb-admin
+  #   image: "aaronshaf/dynamodb-admin:latest"
+  #   ports:
+  #     - "8002:8002"
+  #   environment:
+  #     AWS_REGION: ap-southeast-2
+  #     AWS_ACCESS_KEY_ID: DUMMYCOINJARKEY
+  #     AWS_SECRET_ACCESS_KEY: DUMMYCOINJARSECRET
+  #     DYNAMO_ENDPOINT: http://dynamodb2:8000
+  #     PORT: 8002
 
   mongodb7:
     container_name: mongodb7
