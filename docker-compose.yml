@@ -97,3 +97,10 @@ services:
   #     - "9090"
   #   environment:
   #     initialBuckets: "indices-test"
+
+  mailcrab:
+    container_name: mailcrab
+    image: "marlonb/mailcrab:latest"
+    ports:
+      - "1080:1080"
+      - "1025:1025"
